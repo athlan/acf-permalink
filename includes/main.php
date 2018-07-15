@@ -2,30 +2,21 @@
 /**
  * Register hooks in WordPress
  *
- * @package WordPress_ACF_Permalink
+ * @package WordPress_ACF_Permalinks
  */
 
-function wpcfp_acf_support( $post_meta = null, $post = null ) {
-  foreach ($post_meta as $key => $values) {
-    if ($key[0] == "_") {
-      continue;
-    }
-    
-    $new_values = [];
-    foreach ($values as $value_key => $value) {
-      $value = maybe_unserialize($value);
-      
-      if (is_array($value)) {
-        $value = join('-', $value);
-      }
-      
-      $new_values[$value_key] = $value;
-    }
-    
-    $post_meta[$key] = $new_values;
-  }
+require 'class-acf-permalink-adapter.php';
+require 'class-field-permalink-formatter.php';
+require 'class-field-permalink-formatter-context.php';
 
-  return $post_meta;
-}
+require 'formatter/class-default-formatter.php';
+require 'formatter/class-checkbox-formatter.php';
+require 'formatter/class-datepicker-formatter.php';
 
-add_filter( 'wpcfp_get_post_metadata', 'wpcfp_acf_support', 1, 2 );
+$adapter = new \AcfPermalinks\AcfPermalinkAdapter();
+
+$adapter->add_formatter(new \AcfPermalinks\Formatter\DefaultFormatter());
+$adapter->add_formatter(new \AcfPermalinks\Formatter\CheckboxFormatter());
+$adapter->add_formatter(new \AcfPermalinks\Formatter\DatepickerFormatter());
+
+add_filter( 'wpcfp_get_post_metadata', array( $adapter, 'get_post_metadata' ), 1, 2 );

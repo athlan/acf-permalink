@@ -41,8 +41,14 @@ Plugin is also avaliable on GitHub:
 
 ## Installation
 
-Search for **ACF Permalinks** or follow the link
+1. Search for **ACF Permalinks** or follow the link
 https://wordpress.org/plugins/acf-permalinks/
+
+2. Install "Custom Fields Permalink 2" plugin.
+https://wordpress.org/plugins/custom-fields-permalink-redux/
+
+Of course you need to have Advanced Custom Fields plugin installed.
+https://wordpress.org/plugins/advanced-custom-fields/
 
 ## Changelog
 
