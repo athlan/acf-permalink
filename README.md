@@ -2,8 +2,8 @@
 
 Plugin allows to use ACF values in permalink structure by adding %field_fieldname%, for posts, pages and custom post types. This is an extenion for the plugin [Custom Fields Permalink 2](https://wordpress.org/plugins/custom-fields-permalink-redux/).
 
-[![Build Status](https://travis-ci.org/athlan/wordpress-custom-fields-permalink-plugin.svg?branch=master)](https://travis-ci.org/athlan/wordpress-custom-fields-permalink-plugin)
-[![codecov](https://codecov.io/gh/athlan/wordpress-custom-fields-permalink-plugin/branch/master/graph/badge.svg)](https://codecov.io/gh/athlan/wordpress-custom-fields-permalink-plugin)
+[![Build Status](https://travis-ci.org/athlan/acf-permalink.svg?branch=master)](https://travis-ci.org/athlan/acf-permalink)
+[![codecov](https://codecov.io/gh/athlan/acf-permalink/branch/master/graph/badge.svg)](https://codecov.io/gh/athlan/acf-permalink)
 
 ---
 
