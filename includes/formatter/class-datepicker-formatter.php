@@ -34,11 +34,15 @@ class DatepickerFormatter implements FieldPermalinkFormatter {
 	function format( FieldPermalinkFormatterContext $context ) {
 		$context->terminate();
 
-		$value = $context->getValueOriginal();
-		return $this->format_value($value, $context->getPermalinkOptions());
+		$date_value = date_create( $context->getValueOriginal() );
+
+		return $this->format_value( $date_value, $context->getPermalinkOptions() );
 	}
 
-	private function format_value( $value, $permalink_options ) {
-		return $value;
+	private function format_value( \DateTime $value, $permalink_options ) {
+		// TODO et format
+		$format = "Y-m-d";
+
+		return $value->format($format);
 	}
 }
