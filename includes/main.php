@@ -9,6 +9,7 @@ require 'class-acf-permalink-adapter.php';
 require 'class-field-permalink-formatter.php';
 require 'class-field-permalink-formatter-context.php';
 
+require 'formatter/class-multivalue-formatter-helper.php';
 require 'formatter/class-default-formatter.php';
 require 'formatter/class-checkbox-formatter.php';
 require 'formatter/class-datepicker-formatter.php';

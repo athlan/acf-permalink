@@ -35,31 +35,14 @@ class PostFormatter implements FieldPermalinkFormatter {
 	function format( FieldPermalinkFormatterContext $context ) {
 		$context->terminate();
 
-		$value = $context->getValueOriginal();
+		$value             = $context->getValueOriginal();
+		$permalink_options = $context->getPermalinkOptions();
+		$format_function   = array( $this, "format_value_single" );
 
-		// Support for multiple choices.
-		$value = maybe_unserialize( $value );
-		if ( ! is_array( $value ) ) {
-			$value = array( $value );
-		}
-
-		return $this->format_value( $value, $context->getPermalinkOptions() );
+		return MultivalueFormatterHelper::format( $value, $permalink_options, $format_function, $context );
 	}
 
-	private function format_value( array $values, $permalink_options ) {
-		$new_values = array();
-
-		foreach ( $values as $value ) {
-			$value        = $this->format_value_single( $value, $permalink_options );
-			$new_values[] = $value;
-		}
-
-		$value = join( '-', $new_values );
-
-		return $value;
-	}
-
-	private function format_value_single( $value, $permalink_options ) {
+	public function format_value_single( $value, $permalink_options, FieldPermalinkFormatterContext $context ) {
 		// TODO get post name or id
 
 		$post = get_post( $value );
