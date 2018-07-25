@@ -5,6 +5,7 @@
  * @package WordPress_ACF_Permalinks
  */
 
+// Require main class.
 require 'class-acf-permalink-adapter.php';
 require 'class-field-permalink-formatter.php';
 require 'class-field-permalink-formatter-context.php';
@@ -16,12 +17,12 @@ require 'formatter/class-datepicker-formatter.php';
 require 'formatter/class-post-formatter.php';
 require 'formatter/class-user-formatter.php';
 
-$adapter = new \AcfPermalinks\AcfPermalinkAdapter();
+$adapter = new \AcfPermalinks\Acf_Permalink_Adapter();
 
-$adapter->add_formatter(new \AcfPermalinks\Formatter\CheckboxFormatter());
-$adapter->add_formatter(new \AcfPermalinks\Formatter\DatepickerFormatter());
-$adapter->add_formatter(new \AcfPermalinks\Formatter\PostFormatter());
-$adapter->add_formatter(new \AcfPermalinks\Formatter\UserFormatter());
-$adapter->add_formatter(new \AcfPermalinks\Formatter\DefaultFormatter());
+$adapter->add_formatter( new \AcfPermalinks\Formatter\Checkbox_Formatter() );
+$adapter->add_formatter( new \AcfPermalinks\Formatter\Datepicker_Formatter() );
+$adapter->add_formatter( new \AcfPermalinks\Formatter\Post_Formatter() );
+$adapter->add_formatter( new \AcfPermalinks\Formatter\User_Formatter() );
+$adapter->add_formatter( new \AcfPermalinks\Formatter\Default_Formatter() );
 
-add_filter( 'wpcfp_get_post_metadata', array( $adapter, 'get_post_metadata' ), 1, 2 );
+add_filter( 'wpcfp_get_post_metadata_single', array( $adapter, 'get_post_metadata_single' ), 1, 4 );

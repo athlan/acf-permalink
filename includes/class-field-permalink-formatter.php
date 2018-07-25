@@ -7,25 +7,29 @@
 
 namespace AcfPermalinks;
 
-use AcfPermalinks\FieldPermalinkFormatterContext;
+use AcfPermalinks\Field_Permalink_Formatter_Context;
 use WP_Post;
 
 /**
- * FieldPermalinkFormatter.
+ * Field_Permalink_Formatter.
  */
-interface FieldPermalinkFormatter {
+interface Field_Permalink_Formatter {
 
 	/**
-	 * @param FieldPermalinkFormatterContext $context
+	 * Checks is formatter can support field.
+	 *
+	 * @param Field_Permalink_Formatter_Context $context Formatting context.
 	 *
 	 * @return boolean
 	 */
-	function supports( FieldPermalinkFormatterContext $context );
+	function supports( Field_Permalink_Formatter_Context $context );
 
 	/**
-	 * @param FieldPermalinkFormatterContext $context
+	 * Performs field value formatting.
+	 *
+	 * @param Field_Permalink_Formatter_Context $context Formatting context.
 	 *
 	 * @return mixed
 	 */
-	function format( FieldPermalinkFormatterContext $context );
+	function format( Field_Permalink_Formatter_Context $context );
 }

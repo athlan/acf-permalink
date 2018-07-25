@@ -6,48 +6,80 @@
  */
 
 namespace AcfPermalinks;
+use WP_Post;
 
 /**
- * Class AcfPermalinkAdapter
+ * Class Acf_Permalink_Adapter
  */
-class AcfPermalinkAdapter {
+class Acf_Permalink_Adapter {
 
 	/**
-	 * @var FieldPermalinkFormatter[]
+	 * List of formatters.
+	 *
+	 * @var Field_Permalink_Formatter[]
 	 */
 	private $field_formatters = array();
 
-	public function add_formatter( FieldPermalinkFormatter $formatter ) {
+	/**
+	 * Register the formatter.
+	 *
+	 * @param Field_Permalink_Formatter $formatter Formatter to register.
+	 */
+	public function add_formatter( Field_Permalink_Formatter $formatter ) {
 		$this->field_formatters[] = $formatter;
 	}
 
-	function get_post_metadata( $post_meta = null, $post = null ) {
-		$context = new FieldPermalinkFormatterContext();
+	/**
+	 * Hook for wpcfp_get_post_metadata_single.
+	 *
+	 * @param array   $values Post meta values.
+	 * @param string  $field_name Field name.
+	 * @param array   $field_attr Permalink options.
+	 * @param WP_Post $post Post.
+	 *
+	 * @return array
+	 */
+	function get_post_metadata_single( $values, $field_name, array $field_attr, $post = null ) {
+		$context = new Field_Permalink_Formatter_Context();
 
-		foreach ( $post_meta as $field_name => $values ) {
-			if ( $this->is_meta_field( $field_name ) ) {
-				continue;
-			}
-
-			$new_values = [];
-			foreach ( $values as $value_key => $value ) {
-				$permalink_options = [];
-
-				$value                    = $this->format_value( $context, $field_name, $value, $permalink_options, $post );
-				$new_values[ $value_key ] = $value;
-			}
-
-			$post_meta[ $field_name ] = $new_values;
+		if ( ! isset( $values ) || $this->is_meta_field( $field_name ) ) {
+			return $values;
 		}
 
-		return $post_meta;
+		$new_values = [];
+		foreach ( $values as $value_key => $value ) {
+			$permalink_options = $field_attr;
+
+			$value                    = $this->format_value( $context, $field_name, $value, $permalink_options, $post );
+			$new_values[ $value_key ] = $value;
+		}
+
+		return $new_values;
 	}
 
+	/**
+	 * Checks whether postmeta is meta key or not.
+	 *
+	 * @param string $key Meta key.
+	 *
+	 * @return bool
+	 */
 	private function is_meta_field( $key ) {
-		return $key[0] == "_";
+		return '_' === $key[0];
 	}
 
-	private function format_value( FieldPermalinkFormatterContext $context, $field_name, $value, $options, $post ) {
+	/**
+	 * Formats the value.
+	 *
+	 * @param Field_Permalink_Formatter_Context $context Formatting context.
+	 * @param string                            $field_name Field name.
+	 * @param mixed                             $value Field value.
+	 * @param array                             $options Permalink options.
+	 * @param WP_Post                           $post Post.
+	 *
+	 * @return mixed
+	 */
+	private function format_value( Field_Permalink_Formatter_Context $context, $field_name, $value, $options, $post ) {
 		$acf_field_options = get_field_object( $field_name, $post->ID );
 
 		$value_original = $value;
@@ -58,7 +90,7 @@ class AcfPermalinkAdapter {
 			if ( $formatter->supports( $context ) ) {
 				$value = $formatter->format( $context );
 
-				if ($context->isTerminated()) {
+				if ( $context->is_terminated() ) {
 					break;
 				}
 			}

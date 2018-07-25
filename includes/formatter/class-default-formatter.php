@@ -7,30 +7,34 @@
 
 namespace AcfPermalinks\Formatter;
 
-use AcfPermalinks\FieldPermalinkFormatter;
-use AcfPermalinks\FieldPermalinkFormatterContext;
+use AcfPermalinks\Field_Permalink_Formatter;
+use AcfPermalinks\Field_Permalink_Formatter_Context;
 
 /**
- * Class Plugin_Updater handles the upgrade process.
+ * Default_Formatter
  */
-class DefaultFormatter implements FieldPermalinkFormatter {
+class Default_Formatter implements Field_Permalink_Formatter {
 
 	/**
-	 * @param FieldPermalinkFormatterContext $context
+	 * Checks is formatter can support field.
+	 *
+	 * @param Field_Permalink_Formatter_Context $context Formatting context.
 	 *
 	 * @return boolean
 	 */
-	function supports( FieldPermalinkFormatterContext $context ) {
+	function supports( Field_Permalink_Formatter_Context $context ) {
 		return true;
 	}
 
 	/**
-	 * @param FieldPermalinkFormatterContext $context
+	 * Performs field value formatting.
+	 *
+	 * @param Field_Permalink_Formatter_Context $context Formatting context.
 	 *
 	 * @return mixed
 	 */
-	function format( FieldPermalinkFormatterContext $context ) {
-		$value = maybe_unserialize( $context->getValue() );
+	function format( Field_Permalink_Formatter_Context $context ) {
+		$value = maybe_unserialize( $context->value() );
 
 		if ( is_array( $value ) ) {
 			$value = join( '-', $value );

@@ -7,17 +7,28 @@
 
 namespace AcfPermalinks\Formatter;
 
-use AcfPermalinks\FieldPermalinkFormatterContext;
+use AcfPermalinks\Field_Permalink_Formatter_Context;
 use InvalidArgumentException;
 
 /**
- * DatepickerFormatter.
+ * Multivalue_Formatter_Helper.
  */
-class MultivalueFormatterHelper {
+class Multivalue_Formatter_Helper {
 
-	public static function format( $value, $permalink_options, $format_function, FieldPermalinkFormatterContext $context ) {
+	/**
+	 * Helps to dispatch potentially multi-value field to format.
+	 *
+	 * @param mixed                             $value Field values.
+	 * @param array                             $permalink_options Permalink options.
+	 * @param callable                          $format_function Format function reference.
+	 * @param Field_Permalink_Formatter_Context $context Formatting context.
+	 *
+	 * @return string
+	 * @throws InvalidArgumentException When $format_function is not callable.
+	 */
+	public static function format( $value, $permalink_options, $format_function, Field_Permalink_Formatter_Context $context ) {
 		if ( ! is_callable( $format_function ) ) {
-			throw new InvalidArgumentException( "Format function is not callable." );
+			throw new InvalidArgumentException( 'Format function is not callable.' );
 		}
 
 		// Support for multiple choices.
