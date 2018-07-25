@@ -60,8 +60,7 @@ before_script:
 script:
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
-      phpunit --coverage-clover clover.xml
-      WP_MULTISITE=1 phpunit
+      ./bin/run-tests.sh
     fi
   - |
     if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
