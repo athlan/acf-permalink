@@ -39,5 +39,6 @@ require $_tests_dir . '/includes/bootstrap.php';
 require 'class-basetestcase.php';
 require 'class-permalinksteps.php';
 require 'class-permalinkasserter.php';
+require 'class-acfsteps.php';
 
 define( 'WP_RUN_CORE_TESTS', true );
