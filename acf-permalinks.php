@@ -15,4 +15,4 @@
 
 // Require main entry point.
 define( 'ACF_PERMALINK_VERSION', '0.0.1' );
-require 'includes/main.php';
+require __DIR__ . '/includes/main.php';
