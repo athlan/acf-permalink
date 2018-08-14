@@ -52,9 +52,28 @@ class Datepicker_Formatter implements Field_Permalink_Formatter {
 	 * @return string
 	 */
 	private function format_value( \DateTime $value, $permalink_options ) {
-		// TODO et format.
-		$format = 'Y-m-d';
+		$format = $this->get_format($permalink_options);
 
 		return $value->format( $format );
+	}
+
+	private function get_format( $permalink_options ) {
+		if (isset($permalink_options['format'])) {
+			return $permalink_options['format'];
+		}
+
+		if (isset($permalink_options['year'])) {
+			return 'Y';
+		}
+
+		if (isset($permalink_options['month'])) {
+			return 'm';
+		}
+
+		if (isset($permalink_options['day'])) {
+			return 'd';
+		}
+
+		return 'Y-m-d';
 	}
 }
