@@ -1,6 +1,6 @@
 {
   "name": "athlan/acf-permalinks",
-  "description": "Plugin allows to use ACF values in permalink structure by adding %field_fieldname%, for posts, pages and custom post types. This is an extenion for the plugin <a href="https://wordpress.org/plugins/custom-fields-permalink-redux/">Custom Fields Permalink 2</a>.",
+  "description": "Plugin allows to use ACF values in permalink structure by adding %field_fieldname%, for posts, pages and custom post types. This is an extenion for the plugin https://wordpress.org/plugins/custom-fields-permalink-redux/.",
   "keywords": ["wordpress", "plugin", "custom fields", "permalink", "acf", "advanced custom fields"],
   "homepage": "https://github.com/athlan/acf-permalink/",
   "license": "MIT",
