@@ -60,7 +60,7 @@ before_script:
 script:
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
-      ./bin/run-tests.sh
+      bash bin/run-tests.sh
     fi
   - |
     if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
