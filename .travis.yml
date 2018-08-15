@@ -60,6 +60,7 @@ before_script:
 script:
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
+      bash bin/run-tests-before.sh
       bash bin/run-tests.sh
     fi
   - |
