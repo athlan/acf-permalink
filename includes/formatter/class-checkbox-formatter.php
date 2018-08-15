@@ -55,7 +55,17 @@ class Checkbox_Formatter implements Field_Permalink_Formatter {
 	 * @return mixed
 	 */
 	public function format_value_single( $value, $permalink_options, Field_Permalink_Formatter_Context $context ) {
-		// TODO get values or labels.
+		if ( array_key_exists( 'label', $permalink_options ) ) {
+			$acf_field_options = $context->acf_field_options();
+			$choices           = $acf_field_options['choices'];
+
+			if ( array_key_exists( $value, $choices ) ) {
+				return $choices[ $value ];
+			} else {
+				return $value;
+			}
+		}
+
 		return $value;
 	}
 }
