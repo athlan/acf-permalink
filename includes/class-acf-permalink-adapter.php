@@ -46,7 +46,7 @@ class Acf_Permalink_Adapter {
 			return $values;
 		}
 
-		$new_values = [];
+		$new_values = array();
 		foreach ( $values as $value_key => $value ) {
 			$permalink_options = $field_attr;
 
