@@ -10,6 +10,7 @@ namespace AcfPermalinks\Tests\Unit;
 use AcfPermalinks\Field_Permalink_Formatter_Context;
 use AcfPermalinks\Formatter\Multivalue_Formatter_Helper;
 
+use Exception;
 use InvalidArgumentException;
 use PHPUnit_Framework_TestCase;
 
@@ -59,9 +60,17 @@ class Multivalue_Formatter_Helper_UnitTest extends PHPUnit_Framework_TestCase {
 		$helper                       = new Multivalue_Formatter_Helper();
 		$not_callable_format_function = 'this is not callable object';
 
+		$caught_exception = null;
+
 		// when.
-		$this->expectException( 'InvalidArgumentException' );
-		$helper->format( $this->value, $this->permalink_options, $not_callable_format_function, $this->context );
+		try {
+			$helper->format( $this->value, $this->permalink_options, $not_callable_format_function, $this->context );
+		}
+		catch (Exception $e) {
+			$caught_exception = $e;
+		}
+
+		$this->assertTrue($caught_exception instanceof InvalidArgumentException);
 	}
 
 	/**
