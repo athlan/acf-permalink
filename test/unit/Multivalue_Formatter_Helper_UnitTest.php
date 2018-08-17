@@ -44,6 +44,10 @@ class Multivalue_Formatter_Helper_UnitTest extends PHPUnit_Framework_TestCase {
 			'context'           => $context,
 		);
 
+		if (null === $value) {
+			return null;
+		}
+
 		return 'Formatted ' . $value;
 	}
 
@@ -89,6 +93,21 @@ class Multivalue_Formatter_Helper_UnitTest extends PHPUnit_Framework_TestCase {
 
 		// then.
 		$this->assertEquals( $formatted_value, 'Formatted some first value-Formatted some second value' );
+	}
+
+	/**
+	 * Test case.
+	 */
+	public function test_formats_multiple_values_ignores_nulls() {
+		// given.
+		$helper = new Multivalue_Formatter_Helper();
+		$value  = serialize( array( 'some first value', null, 'some third value' ) );
+
+		// when.
+		$formatted_value = $helper->format( $value, $this->permalink_options, $this->format_function, $this->context );
+
+		// then.
+		$this->assertEquals( $formatted_value, 'Formatted some first value-Formatted some third value' );
 	}
 
 	/**
