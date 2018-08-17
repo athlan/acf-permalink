@@ -56,7 +56,7 @@ class Multivalue_Formatter_Helper_UnitTest extends PHPUnit_Framework_TestCase {
 		$not_callable_format_function = 'this is not callable object';
 
 		// when.
-		$this->expectException( InvalidArgumentException::class );
+		$this->expectException( 'InvalidArgumentException' );
 		$helper->format( $this->value, $this->permalink_options, $not_callable_format_function, $this->context );
 	}
 
