@@ -40,8 +40,15 @@ class Multivalue_Formatter_Helper {
 		$new_values = array();
 
 		foreach ( $values as $value ) {
-			$value        = call_user_func_array( $format_function, array( $value, $permalink_options, $context ) );
-			$new_values[] = $value;
+			$value = call_user_func_array( $format_function, array( $value, $permalink_options, $context ) );
+
+			if ( null !== $value ) {
+				$new_values[] = $value;
+			}
+		}
+
+		if ( 0 === count( $new_values ) ) {
+			return null;
 		}
 
 		if ( array_key_exists( 'separator', $permalink_options ) ) {
