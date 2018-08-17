@@ -45,7 +45,7 @@ class Multivalue_Formatter_Helper_UnitTest extends PHPUnit_Framework_TestCase {
 			'context'           => $context,
 		);
 
-		if (null === $value) {
+		if ( null === $value ) {
 			return null;
 		}
 
@@ -65,12 +65,11 @@ class Multivalue_Formatter_Helper_UnitTest extends PHPUnit_Framework_TestCase {
 		// when.
 		try {
 			$helper->format( $this->value, $this->permalink_options, $not_callable_format_function, $this->context );
-		}
-		catch (Exception $e) {
+		} catch ( Exception $e ) {
 			$caught_exception = $e;
 		}
 
-		$this->assertTrue($caught_exception instanceof InvalidArgumentException);
+		$this->assertTrue( $caught_exception instanceof InvalidArgumentException );
 	}
 
 	/**
