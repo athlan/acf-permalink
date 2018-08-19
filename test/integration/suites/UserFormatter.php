@@ -129,13 +129,151 @@ class UserFormatter extends BaseTestCase {
 	}
 
 	/**
+	 * Test case.
+	 */
+	function test_generates_permalink_with_custom_format_login() {
+		// given.
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="login")%/%postname%/' );
+		$this->given_user_multiple_field( 'some_user_field' );
+		$some_users = $this->given_some_users( 1 );
+
+		$selected_values = array( $some_users[0] );
+
+		$post_params     = array(
+			'post_title' => 'Some page title',
+			'meta_input' => array(
+				'some_user_field' => $selected_values,
+			),
+		);
+		$created_post_id = $this->factory()->post->create( $post_params );
+
+		// when & then.
+		$this->permalink_asserter->has_permalink( $created_post_id, '/user1/some-page-title/' );
+	}
+
+	/**
+	 * Test case.
+	 */
+	function test_generates_permalink_with_custom_format_nicename() {
+		// given.
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="nicename")%/%postname%/' );
+		$this->given_user_multiple_field( 'some_user_field' );
+		$some_users = $this->given_some_users( 1 );
+
+		$selected_values = array( $some_users[0] );
+
+		$post_params     = array(
+			'post_title' => 'Some page title',
+			'meta_input' => array(
+				'some_user_field' => $selected_values,
+			),
+		);
+		$created_post_id = $this->factory()->post->create( $post_params );
+
+		// when & then.
+		$this->permalink_asserter->has_permalink( $created_post_id, '/user1/some-page-title/' );
+	}
+
+	/**
+	 * Test case.
+	 */
+	function test_generates_permalink_with_custom_format_firstname() {
+		// given.
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="firstname")%/%postname%/' );
+		$this->given_user_multiple_field( 'some_user_field' );
+		$some_users = $this->given_some_users( 1 );
+
+		$selected_values = array( $some_users[0] );
+
+		$post_params     = array(
+			'post_title' => 'Some page title',
+			'meta_input' => array(
+				'some_user_field' => $selected_values,
+			),
+		);
+		$created_post_id = $this->factory()->post->create( $post_params );
+
+		// when & then.
+		$this->permalink_asserter->has_permalink( $created_post_id, '/first-name-1/some-page-title/' );
+	}
+
+	/**
+	 * Test case.
+	 */
+	function test_generates_permalink_with_custom_format_lastname() {
+		// given.
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="lastname")%/%postname%/' );
+		$this->given_user_multiple_field( 'some_user_field' );
+		$some_users = $this->given_some_users( 1 );
+
+		$selected_values = array( $some_users[0] );
+
+		$post_params     = array(
+			'post_title' => 'Some page title',
+			'meta_input' => array(
+				'some_user_field' => $selected_values,
+			),
+		);
+		$created_post_id = $this->factory()->post->create( $post_params );
+
+		// when & then.
+		$this->permalink_asserter->has_permalink( $created_post_id, '/last-name-1/some-page-title/' );
+	}
+
+	/**
+	 * Test case.
+	 */
+	function test_generates_permalink_with_custom_format_firstname_and_lastname() {
+		// given.
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="firstname lastname")%/%postname%/' );
+		$this->given_user_multiple_field( 'some_user_field' );
+		$some_users = $this->given_some_users( 1 );
+
+		$selected_values = array( $some_users[0] );
+
+		$post_params     = array(
+			'post_title' => 'Some page title',
+			'meta_input' => array(
+				'some_user_field' => $selected_values,
+			),
+		);
+		$created_post_id = $this->factory()->post->create( $post_params );
+
+		// when & then.
+		$this->permalink_asserter->has_permalink( $created_post_id, '/first-name-1-last-name-1/some-page-title/' );
+	}
+
+	/**
+	 * Test case.
+	 */
+	function test_generates_permalink_with_custom_format_displayname() {
+		// given.
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="displayname")%/%postname%/' );
+		$this->given_user_multiple_field( 'some_user_field' );
+		$some_users = $this->given_some_users( 1 );
+
+		$selected_values = array( $some_users[0] );
+
+		$post_params     = array(
+			'post_title' => 'Some page title',
+			'meta_input' => array(
+				'some_user_field' => $selected_values,
+			),
+		);
+		$created_post_id = $this->factory()->post->create( $post_params );
+
+		// when & then.
+		$this->permalink_asserter->has_permalink( $created_post_id, '/display-name-1/some-page-title/' );
+	}
+
+	/**
 	 * Define post object field.
 	 *
 	 * @param string $name Field name.
 	 */
 	private function given_user_field( $name ) {
 		$field_options = array(
-			'role' => array (
+			'role'       => array(
 				0 => 'all',
 			),
 			'field_type' => 'select',
@@ -152,7 +290,7 @@ class UserFormatter extends BaseTestCase {
 	 */
 	private function given_user_multiple_field( $name ) {
 		$field_options = array(
-			'role' => array (
+			'role'       => array(
 				0 => 'all',
 			),
 			'field_type' => 'multi_select',
@@ -177,8 +315,11 @@ class UserFormatter extends BaseTestCase {
 			++$i;
 
 			$user_params     = array(
-				'user_login' => 'user' . $i,
-				'user_email' => 'user' . $i . '@example.com',
+				'user_login'   => 'user' . $i,
+				'user_email'   => 'user' . $i . '@example.com',
+				'first_name'   => 'First name ' . $i,
+				'last_name'    => 'Last name ' . $i,
+				'display_name' => 'Display name ' . $i,
 			);
 			$created_user_id = $this->factory()->user->create( $user_params );
 			$user_ids[]      = $created_user_id;
