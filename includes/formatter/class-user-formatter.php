@@ -65,8 +65,10 @@ class User_Formatter implements Field_Permalink_Formatter {
 			} else {
 				$value = $user->nickname;
 			}
+
+			return $value;
 		}
 
-		return $value;
+		return null;
 	}
 }
