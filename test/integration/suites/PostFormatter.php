@@ -87,7 +87,7 @@ class PostFormatter extends BaseTestCase {
 	 */
 	function test_generates_permalink_with_postname_with_multiple_values_custom_separated() {
 		// given.
-		$this->permalink_steps->given_permalink_structure( '/%field_some_post_object_field(separator="-and-")%/%postname%/' );
+		$this->permalink_steps->given_permalink_structure( '/%field_some_post_object_field(separator=-and-)%/%postname%/' );
 		$this->given_post_object_multiple_field( 'some_post_object_field' );
 		$some_posts = $this->given_some_posts( 2 );
 
