@@ -61,7 +61,7 @@ class CheckboxFormatter extends BaseTestCase {
 	 */
 	function test_generates_permalink_with_multiple_values_custom_separated() {
 		// given.
-		$this->permalink_steps->given_permalink_structure( '/%field_some_checkbox_field(separator="-and-")%/%postname%/' );
+		$this->permalink_steps->given_permalink_structure( '/%field_some_checkbox_field(separator=-and-)%/%postname%/' );
 		$this->given_checkbox_field( 'some_checkbox_field' );
 		$selected_values = array( 'cat', 'dog' );
 

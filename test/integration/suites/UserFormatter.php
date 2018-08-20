@@ -87,7 +87,7 @@ class UserFormatter extends BaseTestCase {
 	 */
 	function test_generates_permalink_with_username_with_multiple_values_custom_separated() {
 		// given.
-		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(separator="-and-")%/%postname%/' );
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(separator=-and-)%/%postname%/' );
 		$this->given_user_multiple_field( 'some_user_field' );
 		$some_users = $this->given_some_users( 2 );
 
@@ -133,7 +133,7 @@ class UserFormatter extends BaseTestCase {
 	 */
 	function test_generates_permalink_with_custom_format_login() {
 		// given.
-		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="login")%/%postname%/' );
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format=login)%/%postname%/' );
 		$this->given_user_multiple_field( 'some_user_field' );
 		$some_users = $this->given_some_users( 1 );
 
@@ -156,7 +156,7 @@ class UserFormatter extends BaseTestCase {
 	 */
 	function test_generates_permalink_with_custom_format_nicename() {
 		// given.
-		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="nicename")%/%postname%/' );
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format=nicename)%/%postname%/' );
 		$this->given_user_multiple_field( 'some_user_field' );
 		$some_users = $this->given_some_users( 1 );
 
@@ -179,7 +179,7 @@ class UserFormatter extends BaseTestCase {
 	 */
 	function test_generates_permalink_with_custom_format_firstname() {
 		// given.
-		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="firstname")%/%postname%/' );
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format=firstname)%/%postname%/' );
 		$this->given_user_multiple_field( 'some_user_field' );
 		$some_users = $this->given_some_users( 1 );
 
@@ -202,7 +202,7 @@ class UserFormatter extends BaseTestCase {
 	 */
 	function test_generates_permalink_with_custom_format_lastname() {
 		// given.
-		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="lastname")%/%postname%/' );
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format=lastname)%/%postname%/' );
 		$this->given_user_multiple_field( 'some_user_field' );
 		$some_users = $this->given_some_users( 1 );
 
@@ -225,7 +225,7 @@ class UserFormatter extends BaseTestCase {
 	 */
 	function test_generates_permalink_with_custom_format_firstname_and_lastname() {
 		// given.
-		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="firstname lastname")%/%postname%/' );
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format=firstname-lastname)%/%postname%/' );
 		$this->given_user_multiple_field( 'some_user_field' );
 		$some_users = $this->given_some_users( 1 );
 
@@ -248,7 +248,7 @@ class UserFormatter extends BaseTestCase {
 	 */
 	function test_generates_permalink_with_custom_format_displayname() {
 		// given.
-		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format="displayname")%/%postname%/' );
+		$this->permalink_steps->given_permalink_structure( '/%field_some_user_field(format=displayname)%/%postname%/' );
 		$this->given_user_multiple_field( 'some_user_field' );
 		$some_users = $this->given_some_users( 1 );
 

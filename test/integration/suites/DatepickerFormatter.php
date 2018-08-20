@@ -39,7 +39,7 @@ class DatepickerFormatter extends BaseTestCase {
 	 */
 	function test_generates_permalink_with_custom_format() {
 		// given.
-		$this->permalink_steps->given_permalink_structure( '/%field_some_datepicker_field(format="d-m-y")%/%postname%/' );
+		$this->permalink_steps->given_permalink_structure( '/%field_some_datepicker_field(format=d-m-y)%/%postname%/' );
 		$this->acf_steps->given_acf_field( 'some_datepicker_field', 'date_picker' );
 
 		$post_params     = array(
