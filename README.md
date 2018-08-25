@@ -38,7 +38,7 @@ Plugin supoorts many fields:
 * Post Object, Page Link
 * User
 
-Full usage samples are included in [Supported ACF Fields](https://github.com/athlan/acf-permalink/wiki/Supported-ACF-Fields) wiki page.
+Full usage samples are included in [Supported ACF Fields](https://github.com/athlan/acf-permalink/wiki#supported-acf-fields) wiki page.
 
 ## Installation
 
