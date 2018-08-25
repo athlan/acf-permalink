@@ -28,15 +28,46 @@ The plugin works for:
 * pages
 * custom post types
 
+Supported ACF Fields
+
+Plugin supoorts many fields:
+
+* Text fields
+* Checkbox
+* Radio
+* Date Picker
+* Post Object, Page Link
+* User
+
+Full usage samples are included in [Supported ACF Fields](https://github.com/athlan/acf-permalink/wiki#supported-acf-fields) wiki page.
+
 Plugin is also available on GitHub:
 <a href="https://github.com/athlan/acf-permalink">https://github.com/athlan/acf-permalink</a>
 
 == Installation ==
 
-* Install plugin in WordPress system in Plugins section. You can search for "ACF Permalinks".
-* Done! Now you can use `%field_fieldname%` tag in Settings -> Permalinks.
+1. Install plugin in WordPress system in Plugins section. You can search for "ACF Permalinks".
+
+2. Install "Custom Fields Permalink 2" plugin.
+https://wordpress.org/plugins/custom-fields-permalink-redux/
+
+Of course you need to have Advanced Custom Fields plugin installed.
+https://wordpress.org/plugins/advanced-custom-fields/
 
 == Frequently Asked Questions ==
+
+= Which of ACF Field Types are supported? =
+
+Plugin supoorts many fields:
+
+* Text fields
+* Checkbox
+* Radio
+* Date Picker
+* Post Object, Page Link
+* User
+
+Full usage samples are included in [Supported ACF Fields](https://github.com/athlan/acf-permalink/wiki#supported-acf-fields) wiki page.
 
 = Found the bug. How to raise a ticket? =
 
