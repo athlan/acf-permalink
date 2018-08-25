@@ -24,4 +24,4 @@ install_plugin() {
 }
 
 install_plugin advanced-custom-fields
-install_plugin custom-fields-permalink-redux https://github.com/athlan/wordpress-custom-fields-permalink-plugin/archive/feature/permalink-attributes.zip
+install_plugin custom-fields-permalink-redux
