@@ -25,4 +25,6 @@
         <exclude-pattern>*/test/integration/suites/*</exclude-pattern>
         <exclude-pattern>*/test/unit/*</exclude-pattern>
     </rule>
+
+    <config name="ignore_warnings_on_exit" value="1" />
 </ruleset>
