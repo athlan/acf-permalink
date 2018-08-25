@@ -25,6 +25,7 @@
         <exclude-pattern>*/test/integration/suites/*</exclude-pattern>
         <exclude-pattern>*/test/unit/*</exclude-pattern>
     </rule>
-
-    <config name="ignore_warnings_on_exit" value="1" />
+    <rule ref="Generic.PHP.NoSilencedErrors.Discouraged">
+        <exclude-pattern>*</exclude-pattern>
+    </rule>
 </ruleset>
