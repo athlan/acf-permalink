@@ -30,13 +30,13 @@ Plugin is also avaliable on GitHub:
 ## Supported ACF Fields
 Examples below assumes that field name is `Some field`.
 
-## Text fields
+### Text fields
 
 |Case|Situation|Result|
 |---|----|----|
 |**Simple value**|Value: *Some value*<br>Permalink structure: `/%field_some_field%/`|`/some-value/`|
 
-## Checkbox
+### Checkbox
 
 |Case|Situation|Result|
 |---|----|----|
@@ -45,14 +45,14 @@ Examples below assumes that field name is `Some field`.
 |**Custom values separator**|Selected values: *Red, Light blue*<br>Permalink structure: `/%field_some_field(separator='-and-')%/`|`/red-and-light-blue/`|
 |**Use choices labels**|Selected values: *color1 (label: Red), color2 (label: Light blue)*<br>Permalink structure: `/%field_some_field%/`|`/red-light-blue/`|
 
-## Radio
+### Radio
 
 |Case|Situation|Result|
 |---|----|----|
 |**Single value selected**|Selected value: *Red*<br>Permalink structure: `/%field_some_field%/`|`/red/`|
 |**Use choices labels**|Selected value: *color1 (label: Red)*<br>Permalink structure: `/%field_some_field%/`|`/red/`|
 
-## Date Picker
+### Date Picker
 
 |Case|Situation|Result|
 |---|----|----|
@@ -62,7 +62,7 @@ Examples below assumes that field name is `Some field`.
 |**Month only**|Selected value: *3/1/2018*<br>Permalink structure: `/%field_some_field(month)%/`|`/03/`|
 |**Day only**|Selected value: *3/1/2018*<br>Permalink structure: `/%field_some_field(day)%/`|`/01/`|
 
-## Post Object, Page Link
+### Post Object, Page Link
 
 |Case|Situation|Result|
 |---|----|----|
@@ -72,7 +72,7 @@ Examples below assumes that field name is `Some field`.
 
 **Note**: Always post title is displayed.
 
-## User
+### User
 
 Given two users:
 1. ID: 5, login: tgiovani, first name: Tom, Last name: Giovani, Display name: Tom Giovani, email: tom.giovani@example.com
