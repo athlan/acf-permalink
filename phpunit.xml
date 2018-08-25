@@ -17,7 +17,7 @@
 		<whitelist processUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">./includes/</directory>
 			<exclude>
-				<file>./main.php</file>
+				<file>./includes/main.php</file>
 
 				<!-- integration features -->
 				<file>./includes/preconditions/class-acf-preconditions.php</file>
