@@ -16,6 +16,16 @@
 	<filter>
 		<whitelist processUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">./includes/</directory>
+			<exclude>
+				<file>./includes/main.php</file>
+
+				<!-- integration features -->
+				<file>./includes/preconditions/class-acf-preconditions.php</file>
+				<file>./includes/preconditions/class-cfp-preconditions.php</file>
+
+				<!-- admin gui -->
+				<file>./includes/admin/plugin-dependency-notice.php</file>
+			</exclude>
 		</whitelist>
 	</filter>
 </phpunit>

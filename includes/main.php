@@ -18,13 +18,32 @@ require 'formatter/class-datepicker-formatter.php';
 require 'formatter/class-post-formatter.php';
 require 'formatter/class-user-formatter.php';
 
-$adapter = new \AcfPermalinks\Acf_Permalink_Adapter();
+require 'preconditions/class-preconditions.php';
+require 'preconditions/class-acf-preconditions.php';
+require 'preconditions/class-cfp-preconditions.php';
 
-$adapter->add_formatter( new \AcfPermalinks\Formatter\Checkbox_Formatter() );
-$adapter->add_formatter( new \AcfPermalinks\Formatter\Radio_Formatter() );
-$adapter->add_formatter( new \AcfPermalinks\Formatter\Datepicker_Formatter() );
-$adapter->add_formatter( new \AcfPermalinks\Formatter\Post_Formatter() );
-$adapter->add_formatter( new \AcfPermalinks\Formatter\User_Formatter() );
-$adapter->add_formatter( new \AcfPermalinks\Formatter\Default_Formatter() );
+$main = function () {
+	$preconditions = new \AcfPermalinks\Preconditions();
+	$preconditions->add_precondition( 'acf', array( '\AcfPermalinks\Acf_Preconditions', 'check_acf_installed' ) );
+	$preconditions->add_precondition( 'cfp', array( '\AcfPermalinks\Cfp_Preconditions', 'check_cfp_installed' ) );
+	$preconditions->add_precondition( 'cfp_min_version', array( '\AcfPermalinks\Cfp_Preconditions', 'check_cfp_min_version' ) );
 
-add_filter( 'wpcfp_get_post_metadata_single', array( $adapter, 'get_post_metadata_single' ), 1, 4 );
+	$precondition_result = $preconditions->check();
+
+	if ( $precondition_result['result'] ) {
+		$adapter = new \AcfPermalinks\Acf_Permalink_Adapter();
+
+		$adapter->add_formatter( new \AcfPermalinks\Formatter\Checkbox_Formatter() );
+		$adapter->add_formatter( new \AcfPermalinks\Formatter\Radio_Formatter() );
+		$adapter->add_formatter( new \AcfPermalinks\Formatter\Datepicker_Formatter() );
+		$adapter->add_formatter( new \AcfPermalinks\Formatter\Post_Formatter() );
+		$adapter->add_formatter( new \AcfPermalinks\Formatter\User_Formatter() );
+		$adapter->add_formatter( new \AcfPermalinks\Formatter\Default_Formatter() );
+
+		add_filter( 'wpcfp_get_post_metadata_single', array( $adapter, 'get_post_metadata_single' ), 1, 4 );
+	} else {
+		require 'admin/plugin-dependency-notice.php';
+	}
+};
+
+add_action( 'plugins_loaded', $main );

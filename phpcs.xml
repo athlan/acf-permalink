@@ -25,4 +25,7 @@
         <exclude-pattern>*/test/integration/suites/*</exclude-pattern>
         <exclude-pattern>*/test/unit/*</exclude-pattern>
     </rule>
+    <rule ref="Generic.PHP.NoSilencedErrors.Discouraged">
+        <exclude-pattern>*</exclude-pattern>
+    </rule>
 </ruleset>
