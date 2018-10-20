@@ -80,7 +80,7 @@ class Acf_Permalink_Adapter {
 	 * @return mixed
 	 */
 	private function format_value( Field_Permalink_Formatter_Context $context, $field_name, $value, $options, $post ) {
-		$acf_field_options = get_field_object( $field_name, $post->ID );
+		$acf_field_options = $this->get_acf_field( $field_name, $post );
 
 		$value_original = $value;
 
@@ -97,5 +97,24 @@ class Acf_Permalink_Adapter {
 		}
 
 		return $value;
+	}
+
+	/**
+	 * Gets ACF field info.
+	 *
+	 * @param string  $field_name Field name.
+	 * @param WP_Post $post Post.
+	 *
+	 * @return array|bool|mixed
+	 */
+	private function get_acf_field( $field_name, $post ) {
+		// Support for ACF >= 5.2.3.
+		if ( function_exists( 'acf_maybe_get_field' ) ) {
+			$info = acf_maybe_get_field( $field_name, $post->ID, false );
+		} else {
+			$info = get_field_object( $field_name, $post->ID );
+		}
+
+		return ( $info ) ? $info : array();
 	}
 }
