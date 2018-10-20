@@ -4,16 +4,22 @@ install_plugin() {
     plugin_name=$1
     download_url=$2
 
-    if [ -z "$download_url" ]; then
-        download_url="https://downloads.wordpress.org/plugin/$plugin_name.zip"
-    fi;
-
     mkdir -p target/plugins
 
     [ -d "target/plugins/$plugin_name/" ] && return;
 
+    echo "Downloading $plugin_name"
+    if [ -z "$download_url" ]; then
+        echo "Determining download url"
+        plugin_page_html=`curl -s https://api.wordpress.org/plugins/info/1.0/$plugin_name.json`
+        download_url=`echo $plugin_page_html | sed -r -e 's/(.*)"download_link":"([^"]*)"(.*)/\2/' | sed 's/\\\//g'`
+        #download_url="https://downloads.wordpress.org/plugin/$plugin_name.zip"
+    fi;
+
     rm target/plugins/$plugin_name.zip
     rm -r target/plugins/$plugin_name/
+
+    echo "Download url is $download_url"
 
     curl -L $download_url > target/plugins/$plugin_name.zip
     unzip target/plugins/$plugin_name.zip -d target/plugins/tmp
