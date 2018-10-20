@@ -52,8 +52,12 @@ class Field_Permalink_Formatter_Context_UnitTest extends PHPUnit_Framework_TestC
 
 		// when.
 		$context->initialize(
-			$this->field_name, $this->field_value, $this->field_original_value,
-			$this->permalink_options, $this->acf_field_options, $this->wp_post
+			$this->field_name,
+			$this->field_value,
+			$this->field_original_value,
+			$this->permalink_options,
+			$this->acf_field_options,
+			$this->wp_post
 		);
 
 		// then.
@@ -69,8 +73,12 @@ class Field_Permalink_Formatter_Context_UnitTest extends PHPUnit_Framework_TestC
 
 		// when.
 		$context->initialize(
-			$this->field_name, $this->field_value, $this->field_original_value,
-			$this->permalink_options, $this->acf_field_options, $this->wp_post
+			$this->field_name,
+			$this->field_value,
+			$this->field_original_value,
+			$this->permalink_options,
+			$this->acf_field_options,
+			$this->wp_post
 		);
 
 		$context->terminate();
