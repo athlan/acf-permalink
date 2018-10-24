@@ -4,7 +4,7 @@ Donate link: https://github.com/athlan/acf-permalink
 Tags: acf, advanced custom fields, custom fields, permalinks, permalink, url, custom post types, post type, tax, taxonomy, types
 Requires at least: 4.5.0
 Tested up to: 5.0
-Stable tag: 0.0.1
+Stable tag: 1.0.0
 Requires PHP: 5.3
 License: MIT
 License URI: http://opensource.org/licenses/MIT
